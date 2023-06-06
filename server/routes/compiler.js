@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.route("/compile").post((req, res) => {
   console.log(req.body);
-  res.json({ test: "test" });
+  res.json({ success: "true" });
 });
 
 module.exports = router;

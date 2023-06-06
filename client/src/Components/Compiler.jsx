@@ -24,10 +24,14 @@ const Compiler = () => {
         "Content-Type": "application/json",
       };
       try {
-        const output = await axios.post("http://localhost:3000/run", payload, {
-          headers: headers,
-        });
-        console.log(response.data);
+        const output = await axios.post(
+          "http://localhost:8080/compiler/compile",
+          payload,
+          {
+            headers: headers,
+          }
+        );
+        console.log(output);
       } catch (error) {
         console.log(error);
       }

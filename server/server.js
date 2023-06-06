@@ -6,7 +6,7 @@ const cors = require("cors");
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
-app.set("view engine", "ejs");
+
 
 const port = 8080;
 
