@@ -31,7 +31,7 @@ const Compiler = () => {
             headers: headers,
           }
         );
-        console.log(response.data);
+        console.log(output);
       } catch (error) {
         console.log(error);
       }
