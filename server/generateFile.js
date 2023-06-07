@@ -9,7 +9,12 @@ if (!fs.existsSync(dirCodes)) {
 }
 
 const generateFile = async (languageType, code) => {
-  const userId = uuid();
+  let userId;
+  if (languageType != "java") {
+    userId = uuid();
+  } else {
+    userId = "Test"
+  }
   const filename = `${userId}.${languageType}`;
   const filepath = path.join(dirCodes, filename);
   fs.writeFileSync(filepath, code);

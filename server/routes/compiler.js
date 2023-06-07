@@ -2,6 +2,7 @@ const express = require("express");
 
 const { executeJs } = require("../executeJs");
 const { generateFile } = require("../generateFile");
+const { executeJava } = require("../executeJava");
 
 const router = express.Router();
 
@@ -20,7 +21,18 @@ router.route("/compile").post(async (req, res) => {
       console.error(error);
       res.status(400).json({ success: false });
     }
-  } else {
+  }
+  else if (languageType == "java") {
+    try {
+      const result = await executeJava(filepath);
+      console.log(result);
+      res.status(200).json({ success: true, "result": result });
+    } catch (error) {
+      console.error(error);
+      res.status(400).json({ success: false });
+    }
+  }
+  else {
     res.status(200).json({ success: true });
   }
 
