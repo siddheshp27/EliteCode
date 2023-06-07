@@ -1,17 +1,23 @@
 const fs = require("fs");
-const { v4: uuidv4 } = require("uuid");
 const path = require("path");
+const { v4: uuid } = require("uuid");
 
-function generateFile(lang, code) {
-  const currdir = __dirname;
-  const filename = `${uuidv4()}.${lang}`;
+const dirCodes = path.join(__dirname, "input");
 
-  const folderpath = path.join(currdir, "input");
-  const file = path.join(folderpath, filename);
-
-  if (!fs.existsSync(folderpath)) fs.mkdirSync(folderpath);
-
-  fs.writeFileSync(file, code);
+if (!fs.existsSync(dirCodes)) {
+  fs.mkdirSync(dirCodes, { recursive: true });
 }
 
-module.exports = generateFile;
+const generateFile = async (languageType, code) => {
+  const userId = uuid();
+  const filename = `${userId}.${languageType}`;
+  const filepath = path.join(dirCodes, filename);
+  fs.writeFileSync(filepath, code);
+  console.log(filepath);
+  return filepath;
+};
+
+
+module.exports = {
+  generateFile
+};
