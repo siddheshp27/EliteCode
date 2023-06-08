@@ -66,6 +66,7 @@ const Compiler = () => {
             <option value="cpp">C++</option>
             <option value="py">Python</option>
             <option value="java">Java</option>
+            <option value="js">Javascript</option>
           </select>
 
           <div className="mx-2 mb-4  border border-gray-200 rounded-lg bg-gray-400">
