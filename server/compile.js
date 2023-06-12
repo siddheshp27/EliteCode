@@ -6,6 +6,7 @@ async function compile(lang, code) {
 
   const output = await Compiler(metadata.folderPath, metadata.fileName, lang);
   console.log(`output : ${output}`);
+  return output;
 }
 
 module.exports = compile;

@@ -33,7 +33,7 @@ const Compiler = () => {
           }
         );
         console.log(output);
-        setOutputValue(output.data.result);
+        setOutputValue(output.data.output);
       } catch (error) {
         console.log(error);
       }
