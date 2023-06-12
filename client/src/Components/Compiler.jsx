@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 const Compiler = () => {
   const [languageType, setlanguageType] = useState("");
   const [code, setCode] = useState(null);
+  const [outputValue, setOutputValue] = useState("Output goes here");
   const handleChange1 = (event) => {
     setlanguageType(event.target.value);
     console.log(languageType);
@@ -32,6 +33,7 @@ const Compiler = () => {
           }
         );
         console.log(output);
+        setOutputValue(output.data.result);
       } catch (error) {
         console.log(error);
       }
@@ -103,6 +105,16 @@ const Compiler = () => {
         <p className="text-center ml-auto text-sm font-normal text-white">
           Remember, Write this code in consideration of the plagarism of the
           problem statement.
+        </p>
+
+        <label
+          for="output"
+          class="mt-2 mb-2 p-4 text-lg font-medium text-white"
+        >
+          Output 📩:
+        </label>
+        <p className="p-4 ml-auto text-lg font-normal text-white">
+          {outputValue}
         </p>
       </form>
     </>

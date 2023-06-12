@@ -8,8 +8,6 @@ router.route("/compile").post((req, res) => {
   const code = req.body.code;
   compile(lang, code);
   console.log(req.body);
-
-  res.json({ success: "true" });
 });
 
 module.exports = router;
