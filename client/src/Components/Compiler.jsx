@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton";
+import Profile from "./Profile";
 const Compiler = () => {
   const [languageType, setlanguageType] = useState("");
   const [code, setCode] = useState(null);
@@ -50,6 +52,9 @@ const Compiler = () => {
         >
           Enter your code here
         </label>
+        <LoginButton />
+        <LogoutButton />
+        <Profile />
 
         <div className="flex flex-col w-full">
           <label
