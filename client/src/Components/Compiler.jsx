@@ -52,9 +52,6 @@ const Compiler = () => {
         >
           Enter your code here
         </label>
-        <LoginButton />
-        <LogoutButton />
-        <Profile />
 
         <div className="flex flex-col w-full">
           <label
