@@ -1,12 +1,21 @@
 import React from "react";
+import { useState } from "react";
 import Compiler from "./Components/Compiler";
-import Nav from "./Components/Nav";
+import NavMenu from "./Components/NavMenu";
 
 const App = () => {
+  const [curr, setCurr] = useState("Home");
+  // const [signInState, setSignInState] ;
+  function CurrPage() {
+    if (curr == "Home") {
+      return <NavMenu />;
+    }
+  }
+
   return (
     <div className="main h-screen w-full">
-      <Nav />
-      <Compiler />
+      <CurrPage />
+      {false}
     </div>
   );
 };

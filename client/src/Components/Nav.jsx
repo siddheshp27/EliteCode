@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import LoginButton from "./LoginButton";
+import Profile from "./Profile";
 
-export default function Nav() {
+export default function Nav({ setIsHovering }) {
   return (
-    <div className="bg-white w-screen p-3">
-      <button className="border-2 border-black px-6 font-lato ">Log In</button>
-      <button>Sign Up</button>
+    <div className="bg-white w-screen h-[73.6px] p-3 flex">
+      <LoginButton />
+      <div
+        className="absolute right-8 px-2 top-0 h-[73.6px] flex items-center"
+        onMouseOver={() => setIsHovering(true)}
+        onMouseOut={() => setIsHovering(false)}
+      >
+        <Profile />
+      </div>
     </div>
   );
 }
