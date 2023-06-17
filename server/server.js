@@ -4,6 +4,10 @@ const router = require("./routes/compiler");
 const cors = require("cors");
 const { authObj } = require("./auth")
 require('express-openid-connect');
+const mongoose = require("mongoose");
+
+
+mongoose.connect(process.env.DATABASE_URI, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('Connected Successfully')).catch((err) => { console.error(err); });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -28,3 +32,4 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
+
