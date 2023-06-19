@@ -5,4 +5,10 @@ const getProblem = async (req, res) => {
   res.json(req.params);
 };
 
-module.exports = { getProblem };
+const addProblem = async (req, res) => {
+  const pb = new Problem(req.body);
+  pb.save().then((a) => console.log(a));
+  res.json(req.body);
+};
+
+module.exports = { getProblem, addProblem };
