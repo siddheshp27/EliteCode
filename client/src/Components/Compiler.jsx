@@ -1,11 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import LoginButton from "./LoginButton";
-import LogoutButton from "./LogoutButton";
-import Profile from "./Profile";
+import React, { useState } from "react";
+
 const Compiler = () => {
   const [languageType, setlanguageType] = useState("");
-  const [code, setCode] = useState(null);
+  const [code, setCode] = useState("");
   const [outputValue, setOutputValue] = useState("Output goes here");
   const handleChange1 = (event) => {
     setlanguageType(event.target.value);
@@ -47,7 +45,7 @@ const Compiler = () => {
     <>
       <form className="h-screen mx-2" onSubmit={handleSubmit}>
         <label
-          for="message"
+          htmlFor="message"
           className="flex items-center justify-center mb-8 mt-10 font-bold text-white text-2xl"
         >
           Enter your code here
@@ -55,14 +53,14 @@ const Compiler = () => {
 
         <div className="flex flex-col w-full">
           <label
-            for="countries"
-            class="mb-2 p-4 text-lg font-medium text-white"
+            htmlFor="countries"
+            className="mb-2 p-4 text-lg font-medium text-white"
           >
             Select a language🧾
           </label>
           <select
             id="language"
-            class="mx-2 mb-4 bg-gray-400 border border-gray-300 text-gray-900 text-sm rounded-lg p-4"
+            className="mx-2 mb-4 bg-gray-400 border border-gray-300 text-gray-900 text-sm rounded-lg p-4"
             onChange={handleChange1}
             value={languageType}
           >
@@ -75,13 +73,13 @@ const Compiler = () => {
 
           <div className="mx-2 mb-4  border border-gray-200 rounded-lg bg-gray-400">
             <label
-              for="message"
+              htmlFor="message"
               className="flex justify-start items-start p-4 mb-2 text-lg font-medium text-gray-900"
             >
               Code goes below👇
             </label>
             <div className="px-4 py-2 bg-gray-400 rounded-t-lg dark:bg-gray-800">
-              <label for="comment" className="sr-only">
+              <label htmlFor="comment" className="sr-only">
                 Your comment
               </label>
               <textarea
@@ -110,8 +108,8 @@ const Compiler = () => {
         </p>
 
         <label
-          for="output"
-          class="mt-2 mb-2 p-4 text-lg font-medium text-white"
+          htmlFor="output"
+          className="mt-2 mb-2 p-4 text-lg font-medium text-white"
         >
           Output 📩:
         </label>
