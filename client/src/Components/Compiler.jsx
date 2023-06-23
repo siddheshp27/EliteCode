@@ -7,11 +7,9 @@ const Compiler = () => {
   const [outputValue, setOutputValue] = useState("Output goes here");
   const handleChange1 = (event) => {
     setlanguageType(event.target.value);
-    console.log(languageType);
   };
   const handleChange2 = (event) => {
     setCode(event.target.value);
-    console.log(code);
   };
 
   const handleSubmit = (event) => {

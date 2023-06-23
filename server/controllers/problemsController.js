@@ -6,8 +6,12 @@ const getProblem = async (req, res) => {
 };
 
 const addProblem = async (req, res) => {
-  const pb = new Problem(req.body);
-  pb.save().then((a) => console.log(a));
+  const data = req.body;
+
+  Problem.insertMany(data)
+    .then(() => console.log("noice"))
+    .catch((err) => console.log(err));
+
   res.json(req.body);
 };
 

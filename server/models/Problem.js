@@ -14,16 +14,20 @@ const problemSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  constraints: {
-    type: Object,
+  difficulty: {
+    type: String,
+    require: true,
+    enum: ["Easy", "Medium", "Hard"],
   },
   likes: {
     type: Number,
     required: true,
+    default: 0,
   },
   dislikes: {
     type: Number,
     required: true,
+    default: 0,
   },
 });
 
