@@ -67,7 +67,7 @@ const Compiler = () => {
       };
       try {
         const output = await axios.post(
-          "http://localhost:8080/compiler/compile",
+          "http://3.109.214.96:5000/compiler/compile",
           payload,
           {
             headers: headers,
