@@ -5,6 +5,8 @@ import Editor from "@monaco-editor/react";
 const Compiler = () => {
   const [languageType, setlanguageType] = useState("py");
   const [fileName, setFileName] = useState("py");
+  const [code, setCode] = useState(`print("Hello Word")`);
+  const [outputValue, setOutputValue] = useState("Output goes here");
   const editorRef = useRef(null);
 
   const handleEditorDidMount = (editor, monaco) => {
@@ -47,11 +49,12 @@ const Compiler = () => {
     },
   };
   const file = languageData[fileName];
-  const [code, setCode] = useState(file.value);
-  const [outputValue, setOutputValue] = useState("Output goes here");
+
   const handleChange1 = (event) => {
     setlanguageType(event.target.value);
     setFileName(event.target.value);
+
+    setCode(languageData[languageType].value);
   };
 
   const handleSubmit = (event) => {
@@ -60,7 +63,7 @@ const Compiler = () => {
     const sendCompilerCode = async () => {
       const payload = {
         languageType,
-        code,
+        code: languageData[languageType].value,
       };
       const headers = {
         "Content-Type": "application/json",
