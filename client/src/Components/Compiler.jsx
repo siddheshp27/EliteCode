@@ -1,19 +1,62 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import Editor from "@monaco-editor/react";
 
 const Compiler = () => {
-  const [languageType, setlanguageType] = useState("");
-  const [code, setCode] = useState("");
+  const [languageType, setlanguageType] = useState("py");
+  const [fileName, setFileName] = useState("py");
+  const editorRef = useRef(null);
+
+  const handleEditorDidMount = (editor, monaco) => {
+    editorRef.current = editor;
+  };
+
+  const handleEditorChange = (value) => {
+    setCode(value);
+  };
+
+  const languageData = {
+    py: {
+      name: "script.py",
+      language: "python",
+      value: "print('Hello World')",
+    },
+    js: {
+      name: "script.js",
+      language: "javascript",
+      value: "console.log('Hello World')",
+    },
+    cpp: {
+      name: "script.cpp",
+      language: "cpp",
+      value: `#include <iostream>
+
+      int main() {
+          std::cout << "Hello, World!" << std::endl;
+          return 0;
+      }`,
+    },
+    java: {
+      name: "Test.java",
+      language: "java",
+      value: `public class Test {
+        public static void main(String[] args) {
+            System.out.println("Hello World");
+        }
+    }`,
+    },
+  };
+  const file = languageData[fileName];
+  const [code, setCode] = useState(file.value);
   const [outputValue, setOutputValue] = useState("Output goes here");
   const handleChange1 = (event) => {
     setlanguageType(event.target.value);
-  };
-  const handleChange2 = (event) => {
-    setCode(event.target.value);
+    setFileName(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const sendCompilerCode = async () => {
       const payload = {
         languageType,
@@ -76,19 +119,17 @@ const Compiler = () => {
             >
               Code goes below👇
             </label>
-            <div className="px-4 py-2 bg-gray-400 rounded-t-lg dark:bg-gray-800">
-              <label htmlFor="comment" className="sr-only">
-                Your comment
-              </label>
-              <textarea
-                id="comment"
-                rows="4"
-                className="w-full px-0 text-sm text-gray-900 bg-gray-400 border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-                placeholder="Write a comment..."
-                required
-                onChange={handleChange2}
-                value={code}
-              ></textarea>
+            <div className="px-4 py-2 w-full bg-gray-400 rounded-t-lg dark:bg-gray-800">
+              <Editor
+                height="50vh"
+                width="100%"
+                theme="vs-dark"
+                onMount={handleEditorDidMount}
+                path={file.name}
+                defaultLanguage={file.language}
+                defaultValue={file.value}
+                onChange={handleEditorChange}
+              />
             </div>
             <div className="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
               <button
