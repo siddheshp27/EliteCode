@@ -9,7 +9,7 @@ function ProfileMenu({ setIsHovering }) {
   return (
     isAuthenticated && (
       <div
-        className="absolute right-8 py-1 bg-[#181a1b]"
+        className="absolute right-8 py-1 bg-[#181a1b] z-10"
         onMouseOver={() => setIsHovering(true)}
         onMouseOut={() => setIsHovering(false)}
       >

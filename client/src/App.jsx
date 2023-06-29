@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Compiler from "./Components/Compiler";
 import NavMenu from "./Components/NavMenu";
 import { useAuth0 } from "@auth0/auth0-react";
+import ProblemPage from "./Components/ProblemPage";
 
 const App = () => {
   const [curr, setCurr] = useState("Home");
@@ -26,7 +26,7 @@ const App = () => {
       return (
         <div>
           <NavMenu />
-          <Compiler />
+          <ProblemPage />
         </div>
       );
     }
