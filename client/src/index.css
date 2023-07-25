@@ -24,3 +24,35 @@ html {
   background-image: url("assets/horizontal.png");
   cursor: row-resize;
 }
+
+#hero-cta {
+  -webkit-text-size-adjust: 100%;
+  font-family: "DM Sans", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-box-direction: normal;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  border: 1px #000;
+  background-color: #fff;
+  transition: color 0.2s, background-color 0.2s;
+  color: #000;
+  transform: translate3d(0px, 0rem, 0px) scale3d(1, 1, 1) rotateX(0deg)
+    rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transform-style: preserve-3d;
+  opacity: 1;
+}
+#hero-cta:hover {
+  background-color: #0082ff;
+  color: #fff;
+}

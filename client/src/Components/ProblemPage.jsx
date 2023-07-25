@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Split from "react-split";
 
 import Compiler from "./ProblemPage/Compiler";
 import Console from "./ProblemPage/Console";
+import { ClientContext } from "../Context";
 
 export default function ProblemPage() {
   const [consoleState, setConsoleState] = useState(true);
-
+  const { handleSubmit } = useContext(ClientContext);
   const toggleConsole = (e) => {
     e.preventDefault();
     setConsoleState((prev) => !prev);
@@ -40,9 +41,11 @@ export default function ProblemPage() {
             className="bg-[#252729] text-sm text-white "
             onClick={toggleConsole}
           >
-            console
+            Console
           </button>
-          <button className="">Submit</button>
+          <button id="hero-cta" onClick={handleSubmit}>
+            Submit
+          </button>
         </div>
       </div>
     </Split>
